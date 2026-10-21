@@ -1,0 +1,292 @@
+@import url('https://googleapis.com');
+
+:root {
+    --color-dirt: #866043;
+    --color-grass: #5c8e32;
+    --color-grass-hover: #4d7729;
+    --color-stone: #313233;
+    --color-stone-light: #4a4a4a;
+    --color-diamond: #4dedf3;
+    --color-gold: #fdb813;
+    --color-emerald: #17dd62;
+    --color-bg-dark: #1e1e1f;
+    --color-bg-light: #f7f5f0;
+    --color-card-bg: #ffffff;
+    --color-text-dark: #222222;
+    --color-text-light: #f5f5f5;
+    --color-text-muted: #777777;
+    
+    --font-pixel-heading: 'Press Start 2P', cursive;
+    --font-pixel-sub: 'VT323', monospace;
+    --font-body: 'Work Sans', sans-serif;
+
+    --box-shadow: 0 4px 0px rgba(0,0,0,0.15);
+    --pixel-border: 4px solid var(--color-stone);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg-light);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.btn {
+    display: inline-block;
+    font-family: var(--font-pixel-sub);
+    font-size: 1.5rem;
+    padding: 0.5rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: var(--pixel-border);
+    background-color: var(--color-grass);
+    color: white;
+    box-shadow: inset -4px -4px 0px rgba(0,0,0,0.4), 
+                inset 4px 4px 0px rgba(255,255,255,0.3);
+    position: relative;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: var(--color-grass-hover);
+    transform: translateY(2px);
+    box-shadow: inset -2px -2px 0px rgba(0,0,0,0.4), 
+                inset 2px 2px 0px rgba(255,255,255,0.3);
+}
+
+.section-title {
+    font-family: var(--font-pixel-heading);
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--color-stone);
+    text-shadow: 2px 2px 0px #ccc;
+}
+
+.navbar {
+    background-color: var(--color-stone);
+    border-bottom: 6px solid var(--color-dirt);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-pixel-heading);
+    font-size: 1.2rem;
+    color: var(--color-text-light);
+}
+
+.logo span {
+    color: var(--color-emerald);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-family: var(--font-pixel-sub);
+    font-size: 1.6rem;
+    color: var(--color-text-light);
+}
+
+.nav-links a:hover, 
+.nav-links a.active {
+    color: var(--color-gold);
+}
+
+.server-ip-badge {
+    background-color: var(--color-bg-dark);
+    border: 2px solid var(--color-stone-light);
+    color: var(--color-emerald);
+    font-family: var(--font-pixel-sub);
+    font-size: 1.3rem;
+    padding: 4px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.server-ip-badge i {
+    font-size: 0.8rem;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.4; }
+    50% { opacity: 1; }
+    100% { opacity: 0.4; }
+}
+
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://unsplash.com') no-repeat center center/cover;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    border-bottom: 8px solid var(--color-stone);
+}
+
+.hero-content h1 {
+    font-family: var(--font-pixel-heading);
+    font-size: 2.2rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    text-shadow: 4px 4px 0px var(--color-stone);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 500;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.8);
+}
+
+.store-section {
+    padding: 5rem 0;
+}
+
+.store-section:nth-of-type(even) {
+    background-color: #ededed;
+}
+
+.store-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.store-card {
+    background: var(--color-card-bg);
+    border: var(--pixel-border);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 2rem;
+}
+
+.card-icon-header {
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.rank-title {
+    font-family: var(--font-pixel-heading);
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.tier-vip { color: var(--color-grass); }
+.tier-mvp { color: var(--color-diamond); }
+.tier-elite { color: var(--color-gold); }
+.tier-coins { color: var(--color-emerald); }
+
+.perks-list {
+    list-style: none;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.perks-list li {
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+    border-bottom: 1px dashed #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.perks-list li i {
+    color: var(--color-grass);
+}
+
+.price-tag {
+    font-family: var(--font-pixel-heading);
+    font-size: 1.4rem;
+    text-align: center;
+    color: var(--color-stone);
+    margin-bottom: 1.5rem;
+}
+
+.footer {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    padding: 3rem 0 1.5rem 0;
+    font-size: 0.9rem;
+    border-top: 6px solid var(--color-dirt);
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-about {
+    max-width: 500px;
+}
+
+.footer-about h2 {
+    font-family: var(--font-pixel-heading);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 2px solid var(--color-stone-light);
+    padding-top: 1.5rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-pixel-sub);
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .nav-links {
+        gap: 1.2rem;
+    }
+    .hero-content h1 {
+        font-size: 1.6rem;
+    }
+}
