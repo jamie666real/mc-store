@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-const MINECRAFT_SERVER_IP = '://yourserver.com';
+const MINECRAFT_SERVER_IP = '://play.shadownetwork.shop';
 
 app.api = app.get('/api/server-status', async (req, res) => {
   try {
