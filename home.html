@@ -19,7 +19,8 @@
                 <li><a href="#rules">Terms</a></li>
             </ul>
             <div class="server-ip-badge">
-                <i class="fas fa-circle"></i> play.mcstore.com
+                <i class="fas fa-circle" id="status-indicator"></i> 
+                <span id="player-count">://mcstore.com</span>
             </div>
         </div>
     </nav>
@@ -45,7 +46,7 @@
                         <li><i class="fas fa-check"></i> 1.5x In-game coin multiplier</li>
                         <li><i class="fas fa-check"></i> Join full server lobbies</li>
                     </ul>
-                    <div class="price-tag">$4.99</div>
+                    <div class="price-tag">\$4.99</div>
                     <button class="btn">Buy Package</button>
                 </article>
 
@@ -59,7 +60,7 @@
                         <li><i class="fas fa-check"></i> Custom join announcement rules</li>
                         <li><i class="fas fa-check"></i> Access to monthly cosmetic crates</li>
                     </ul>
-                    <div class="price-tag">$14.99</div>
+                    <div class="price-tag">\$14.99</div>
                     <button class="btn">Buy Package</button>
                 </article>
 
@@ -73,7 +74,7 @@
                         <li><i class="fas fa-check"></i> Access to world editor /nick control</li>
                         <li><i class="fas fa-check"></i> Personal private Discord tier channel</li>
                     </ul>
-                    <div class="price-tag">$29.99</div>
+                    <div class="price-tag">\$29.99</div>
                     <button class="btn">Buy Package</button>
                 </article>
 
@@ -94,7 +95,7 @@
                         <li><i class="fas fa-check"></i> Instant digital drop delivery</li>
                         <li><i class="fas fa-check"></i> Usable in all network game shops</li>
                     </ul>
-                    <div class="price-tag">$1.99</div>
+                    <div class="price-tag">\$1.99</div>
                     <button class="btn">Buy Package</button>
                 </article>
 
@@ -107,7 +108,7 @@
                         <li><i class="fas fa-check"></i> Instant digital drop delivery</li>
                         <li><i class="fas fa-check"></i> Usable in all network game shops</li>
                     </ul>
-                    <div class="price-tag">$9.99</div>
+                    <div class="price-tag">\$9.99</div>
                     <button class="btn">Buy Package</button>
                 </article>
 
@@ -120,7 +121,7 @@
                         <li><i class="fas fa-check"></i> Instant digital drop delivery</li>
                         <li><i class="fas fa-check"></i> Usable in all network game shops</li>
                     </ul>
-                    <div class="price-tag">$19.99</div>
+                    <div class="price-tag">\$19.99</div>
                     <button class="btn">Buy Package</button>
                 </article>
 
@@ -141,6 +142,32 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        async function fetchServerStatus() {
+            const statusIndicator = document.getElementById('status-indicator');
+            const playerCount = document.getElementById('player-count');
+            
+            try {
+                const response = await fetch('/api/status');
+                const data = await response.json();
+                
+                if (data.online) {
+                    statusIndicator.style.color = 'var(--color-emerald)';
+                    playerCount.textContent = `${data.players.online} / ${data.players.max} Online`;
+                } else {
+                    statusIndicator.style.color = '#ff6b6b';
+                    playerCount.textContent = 'Server Offline';
+                }
+            } catch (error) {
+                statusIndicator.style.color = '#ff6b6b';
+                playerCount.textContent = 'Server Offline';
+            }
+        }
+
+        fetchServerStatus();
+        setInterval(fetchServerStatus, 30000);
+    </script>
 
 </body>
 </html>
